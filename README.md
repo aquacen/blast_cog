@@ -19,7 +19,7 @@
 
 ## To use:
 
-1. Enter in the workspace dir (cd $HOME/blast_go)
+1. Enter in the workspace dir (cd $HOME/blast_cog)
 
 2. Run cog shell script with parameters:
 
