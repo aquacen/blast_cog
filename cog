@@ -1,0 +1,20 @@
+#!/bin/bash
+
+HOME=.
+COGHOME=$2
+BLASTDB=$2
+BLASTPR=$1.vs.2003-2014.r
+
+THREADS=24
+FILESIZE=$(stat -c%s "$1")
+BLOCK=$(( FILESIZE / THREADS ))
+
+echo -n "" > $BLASTPR
+
+cat $1 |parallel --gnu -j $THREADS --block $BLOCK --recstart '>' -k --pipe \
+blastp -query - -db $BLASTDB/db2003-2014 -outfmt 6 -num_threads 1 -num_alignments 1 -max_hsps 1 > $BLASTPR
+
+#blastp -query $1 -db $BLASTDB -outfmt 6 -out $BLASTPR -num_threads 6 -num_alignments 1 -max_hsps 1
+
+$HOME/get.detail.pl $BLASTPR $COGHOME/cog2003-2014.csv $COGHOME/cognames2003-2014.tab > $BLASTPR.detail
+$HOME/get.number.pl $1 $BLASTPR $BLASTPR.detail $COGHOME/fun2003-2014.tab > $BLASTPR.number
