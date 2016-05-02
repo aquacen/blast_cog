@@ -14,12 +14,14 @@
 
 6. Download fun2003-20014.tab (ftp://ftp.ncbi.nih.gov/pub/COG/COG2014/data/fun2003-2014.tab) in COG_DB_directory
 
-7. Git clone in workspace dir: (git clone (https://github.com/aquacen/blast_cog.git)
+7. Git clone in a workspace dir: (git clone https://github.com/aquacen/blast_cog.git)
 
 
 ## To use:
 
-1. Run cog shell script with parameters:
+1. Enter in the workspace dir (cd $HOME/blast_go)
+
+2. Run cog shell script with parameters:
 
 ./cog FASTA_WITH_AMINOACIDS COG_DB_directory
 
