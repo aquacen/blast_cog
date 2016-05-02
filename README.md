@@ -34,3 +34,12 @@
 1. NCBI-Blast+ Stand alone (makeblastdb and blastp): ftp://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/LATEST/
 
 2. Perl: https://www.perl.org/
+
+3. GNU Parallel - The Command-Line Power Tool
+
+
+## Advanced settings
+
+1. To increase number of threads in BlastP update cog shell script THREADS variable
+
+2. Remove parallel dependence
