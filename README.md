@@ -42,4 +42,4 @@
 
 1. To increase number of threads in BlastP update cog shell script THREADS variable
 
-2. Remove parallel dependence
+2. To remove parallel dependence see comments on cog shell script
