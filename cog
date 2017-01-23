@@ -11,10 +11,12 @@ BLOCK=$(( FILESIZE / THREADS ))
 
 echo -n "" > $BLASTPR
 
+FMT="6 qseqid sseqid pident length mismatch gapopen qstart qend sstart send evalue bitscore"
+
 #to remove parallel dependence comment next line
-cat $1 |parallel --no-notice --gnu -j $THREADS --block $BLOCK --recstart '>' -k --pipe blastp -query - -db $BLASTDB/db2003-2014 -outfmt 6 -num_threads 1 -num_alignments 1 -max_hsps 1 > $BLASTPR
+cat $1 |parallel --no-notice --gnu -j $THREADS --block $BLOCK --recstart '>' -k --pipe blastp -query - -db $BLASTDB/db2003-2014 -outfmt \"$FMT\" -num_threads 1 -num_alignments 1 -max_hsps 1 > $BLASTPR
 #to remove parellel dependence uncomment next line
-#blastp -query $1 -db $BLASTDB/db2003-2014 -outfmt 6 -num_threads 1 -num_alignments 1 -max_hsps 1 > $BLASTPR
+#blastp -query $1 -db $BLASTDB/db2003-2014 -outfmt "$FMT" -num_threads 1 -num_alignments 1 -max_hsps 1 > $BLASTPR
 
 $HOME/get.detail.pl $BLASTPR $COGHOME/cog2003-2014.csv $COGHOME/cognames2003-2014.tab > $BLASTPR.detail
 $HOME/get.number.pl $1 $BLASTPR $BLASTPR.detail $COGHOME/fun2003-2014.tab > $BLASTPR.number
