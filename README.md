@@ -36,6 +36,7 @@
 2. Perl: https://www.perl.org/
 
 3. GNU Parallel - The Command-Line Power Tool
+   O. Tange (2011): GNU Parallel - The Command-Line Power Tool, login: The USENIX Magazine, February 2011:42-47.
 
 
 ## Advanced settings

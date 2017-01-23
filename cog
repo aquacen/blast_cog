@@ -5,14 +5,14 @@ COGHOME=$2
 BLASTDB=$2
 BLASTPR=$1.vs.2003-2014.r
 
-THREADS=4
+THREADS=48
 FILESIZE=$(stat -c%s "$1")
 BLOCK=$(( FILESIZE / THREADS ))
 
 echo -n "" > $BLASTPR
 
 #to remove parallel dependence comment next line
-cat $1 |parallel --gnu -j $THREADS --block $BLOCK --recstart '>' -k --pipe blastp -query - -db $BLASTDB/db2003-2014 -outfmt 6 -num_threads 1 -num_alignments 1 -max_hsps 1 > $BLASTPR
+cat $1 |parallel --no-notice --gnu -j $THREADS --block $BLOCK --recstart '>' -k --pipe blastp -query - -db $BLASTDB/db2003-2014 -outfmt 6 -num_threads 1 -num_alignments 1 -max_hsps 1 > $BLASTPR
 #to remove parellel dependence uncomment next line
 #blastp -query $1 -db $BLASTDB/db2003-2014 -outfmt 6 -num_threads 1 -num_alignments 1 -max_hsps 1 > $BLASTPR
 
